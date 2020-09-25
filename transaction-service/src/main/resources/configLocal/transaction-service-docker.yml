@@ -1,0 +1,27 @@
+#APP CONFIGURATION
+spring:
+  application:
+    name: transaction-service
+
+server:
+  port: 7001
+
+#DATASOURCE CONFIGURATION
+db:
+  host: 192.168.99.100
+  port: 5432
+  name: bank_app
+  username: dev_alexis
+  password: 1234
+
+#EUREKA CLIENT CONFIGURATION
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+  client:
+    service-url:
+      defaultZone: http://discovery-service:7075/eureka/
+    fetch-registry: true
+    register-with-eureka: true

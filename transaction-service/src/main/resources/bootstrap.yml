@@ -1,0 +1,12 @@
+#APP CONFIGURATION
+spring:
+  application:
+    name: transaction-service
+  profiles:
+    active: docker
+  cloud:
+    config:
+      uri: http://configuration-server:8085
+
+server:
+  port: 7001

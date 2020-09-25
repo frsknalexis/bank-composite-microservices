@@ -1,0 +1,42 @@
+#APP CONFIGURATION
+spring:
+  application:
+    name: bank-zuul-proxy
+
+server:
+  port: 8765
+
+#EUREKA CLIENT CONFIGURATION
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+  client:
+    service-url:
+      defaultZone: http://localhost:7075/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+#ZUUL PROXY CONFIGURATION
+zuul:
+  routes:
+    transaction-service:
+      serviceId: transaction-service
+      path: /api/transaction-service-v1/**
+    account-service:
+      serviceId: account-service
+      path: /api/account-service-v1/**
+    deposit-service:
+      serviceId: deposit-service
+      path: /api/deposit-service-v1/**
+    transfer-service:
+      serviceId: transfer-service
+      path: /api/transfer-service-v1/**
+    withdraw-service:
+      serviceId: withdraw-service
+      path: /api/withdraw-service-v1/**
+
+ribbon:
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
