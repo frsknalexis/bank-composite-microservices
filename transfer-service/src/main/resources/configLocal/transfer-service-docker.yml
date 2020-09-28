@@ -1,0 +1,24 @@
+#APP CONFIGURATION
+spring:
+  application:
+    name: transfer-service
+
+server:
+  port: 7004
+
+#WEB CLIENTS
+services:
+  transaction-service:
+    base-url: http://transaction-service/
+
+#EUREKA CLIENT CONFIGURATION
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+  client:
+    service-url:
+      defaultZone: http://discovery-service:7075/eureka/
+    fetch-registry: true
+    register-with-eureka: true

@@ -75,6 +75,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
+		<finalName>transfer-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

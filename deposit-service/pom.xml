@@ -75,6 +75,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
+		<finalName>deposit-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
